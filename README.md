@@ -56,3 +56,15 @@ The processor's architectural state and control logic were rigorously verified u
 
 * **Result:** Data is successfully routed from the register file to Data Memory via `sw`. On the subsequent clock cycle, `ResultSrc=1` selects `ReadData` over `ALU_Result` at the write-back multiplexer, loading the value stored by `sw` back into `x5` via `lw`.
 * **Note on Simulation State:** Signals enter an undefined state (X) after the final instruction as the processor fetches from uninitialized memory - expected behavior in simulation when no program termination instruction is present.
+
+---
+
+## Simulation
+
+Tested on EDA Playground with Icarus Verilog (v0.9.7).
+
+1. Open [EDA Playground](https://edaplayground.com)
+2. Add all `src/` files and your testbench
+3. Select **Icarus Verilog** as the simulator
+4. Enable **EPWave** for waveform viewing
+5. Load machine code into `instruction_memory` via `$readmemh`
