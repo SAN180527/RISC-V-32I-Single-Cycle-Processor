@@ -39,7 +39,7 @@ The processor's architectural state and control logic were rigorously verified u
 <img src="Screenshot 2026-06-24 171811.png" width="700">
 
 * **Result:** The ALU successfully processes immediate and register values, and the `WE3` signal correctly asserts to save the final calculation (`x3 = 0xc = 12`) back into the register file.
-* **Note on Simulation State:** `WE3` enters an undefined state (X) after the final instruction as the processor fetches from uninitialized memory — expected behavior in simulation when no program termination instruction is present.
+* **Note on Simulation State:** `WE3` enters an undefined state (X) after the final instruction as the processor fetches from uninitialized memory - expected behavior in simulation when no program termination instruction is present.
 
 ### 2. Control Flow & Branching Logic
 **Test:** `addi x1, x0, 1` -> `beq x1, x1, -4` (Infinite Loop)
@@ -51,7 +51,7 @@ The processor's architectural state and control logic were rigorously verified u
 ### 3. Memory Subsystem Interface
 **Test:** `addi x4, x0, 15` -> `sw x4, 0(x0)` -> `lw x5, 0(x0)`
 
-<img src="memory_waveform.png" width="700">
+<img src="Screenshot 2026-06-24 172716.png" width="700">
 
 * **Result:** Data is successfully routed from the register file to Data Memory via `sw`. On the subsequent clock cycle, `ResultSrc=1` selects `ReadData` over `ALU_Result` at the write-back multiplexer, loading the value stored by `sw` back into `x5` via `lw`.
-* **Note on Simulation State:** Signals enter an undefined state (X) after the final instruction as the processor fetches from uninitialized memory — expected behavior in simulation when no program termination instruction is present.
+* **Note on Simulation State:** Signals enter an undefined state (X) after the final instruction as the processor fetches from uninitialized memory - expected behavior in simulation when no program termination instruction is present.
