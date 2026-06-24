@@ -10,7 +10,7 @@ A structural Verilog implementation of a 32-bit RISC-V processor core based on t
 * **Implementation Language:** Verilog (Structural & Behavioral RTL)
 * **Simulation Tool:** Icarus Verilog / EDA Playground (EPWave)
 
-<img src="datapath_diagram.png" width="700">
+<img src="Screenshot 2026-06-24 171811.png" width="700">
 *Diagram based on the RISC-V Single-Cycle Datapath from Harris & Harris, "Digital Design and Computer Architecture".*
 
 ---
@@ -36,7 +36,7 @@ The processor's architectural state and control logic were rigorously verified u
 ### 1. Arithmetic & Register Writeback
 **Test:** `addi x1, x0, 5` -> `addi x2, x0, 7` -> `add x3, x1, x2`
 
-<img src="arithmetic_waveform.png" width="700">
+<img src="Screenshot 2026-06-24 171811.png" width="700">
 
 * **Result:** The ALU successfully processes immediate and register values, and the `WE3` signal correctly asserts to save the final calculation (`x3 = 0xc = 12`) back into the register file.
 * **Note on Simulation State:** `WE3` enters an undefined state (X) after the final instruction as the processor fetches from uninitialized memory — expected behavior in simulation when no program termination instruction is present.
