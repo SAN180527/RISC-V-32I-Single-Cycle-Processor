@@ -10,9 +10,8 @@ A structural Verilog implementation of a 32-bit RISC-V processor core based on t
 * **Implementation Language:** Verilog (Structural & Behavioral RTL)
 * **Simulation Tool:** Icarus Verilog / EDA Playground (EPWave)
 
-![*(Insert Image Here: Upload your block diagram)*](https://github.com/SAN180527/RISC-V-32I-Single-Cycle-Processor/blob/main/RISC_V_image.png)
-*Diagram based on the RISC-V Single-Cycle Datapath from Digital Design and Computer Architecture, RISC-V Edition book by David Harris and Sarah L. Harris
-.*
+<img src="datapath_diagram.png" width="700">
+*Diagram based on the RISC-V Single-Cycle Datapath from Harris & Harris, "Digital Design and Computer Architecture".*
 
 ---
 
@@ -37,20 +36,22 @@ The processor's architectural state and control logic were rigorously verified u
 ### 1. Arithmetic & Register Writeback
 **Test:** `addi x1, x0, 5` -> `addi x2, x0, 7` -> `add x3, x1, x2`
 
-![*(Insert Image Here: Upload your 2nd screenshot showing WD3 calc)*](https://github.com/SAN180527/RISC-V-32I-Single-Cycle-Processor/blob/main/Screenshot%202026-06-24%20171811.png)
+<img src="arithmetic_waveform.png" width="700">
 
-* **Result:** The ALU successfully processes immediate and register values, and the `WE3` signal correctly asserts to save the final calculation (`0xc` / 12) back into the register file.
+* **Result:** The ALU successfully processes immediate and register values, and the `WE3` signal correctly asserts to save the final calculation (`x3 = 0xc = 12`) back into the register file.
+* **Note on Simulation State:** `WE3` enters an undefined state (X) after the final instruction as the processor fetches from uninitialized memory — expected behavior in simulation when no program termination instruction is present.
 
 ### 2. Control Flow & Branching Logic
 **Test:** `addi x1, x0, 1` -> `beq x1, x1, -4` (Infinite Loop)
 
-![*(Insert Image Here: Upload your 1st screenshot showing PC_Top looping 0->4->0)*
-](https://github.com/SAN180527/RISC-V-32I-Single-Cycle-Processor/blob/main/Screenshot%202026-06-24%20172241.png)
+<img src="branch_waveform.png" width="700">
+
 * **Result:** The ALU `zero` flag successfully triggers the control unit's `pc_src` multiplexer, dynamically rerouting the Program Counter backward instead of continuing sequentially.
 
 ### 3. Memory Subsystem Interface
 **Test:** `addi x4, x0, 15` -> `sw x4, 0(x0)` -> `lw x5, 0(x0)`
 
-![*(Insert Image Here: Upload your 3rd screenshot showing MemWrite and ReadData)*](https://github.com/SAN180527/RISC-V-32I-Single-Cycle-Processor/blob/main/Screenshot%202026-06-24%20172716.png)
+<img src="memory_waveform.png" width="700">
 
-* **Result:** Data is successfully routed from the register file to Data Memory (`sw`). On the subsequent clock cycle, the writeback multiplexer correctly isolates the memory output to load the stored data back into a new register (`lw`).
+* **Result:** Data is successfully routed from the register file to Data Memory via `sw`. On the subsequent clock cycle, `ResultSrc=1` selects `ReadData` over `ALU_Result` at the write-back multiplexer, loading the value stored by `sw` back into `x5` via `lw`.
+* **Note on Simulation State:** Signals enter an undefined state (X) after the final instruction as the processor fetches from uninitialized memory — expected behavior in simulation when no program termination instruction is present.
