@@ -44,7 +44,7 @@ The processor's architectural state and control logic were rigorously verified u
 ### 2. Control Flow & Branching Logic
 **Test:** `addi x1, x0, 1` -> `beq x1, x1, -4` (Infinite Loop)
 
-<img src="branch_waveform.png" width="700">
+<img src="Screenshot 2026-06-24 172241.png" width="700">
 
 * **Result:** The ALU `zero` flag successfully triggers the control unit's `pc_src` multiplexer, dynamically rerouting the Program Counter backward instead of continuing sequentially.
 
