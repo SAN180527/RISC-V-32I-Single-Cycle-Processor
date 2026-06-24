@@ -10,7 +10,7 @@ A structural Verilog implementation of a 32-bit RISC-V processor core based on t
 * **Implementation Language:** Verilog (Structural & Behavioral RTL)
 * **Simulation Tool:** Icarus Verilog / EDA Playground (EPWave)
 
-<img src="Screenshot 2026-06-24 171811.png" width="700">
+<img src="RISC_V_image.png" width="700">
 *Diagram based on the RISC-V Single-Cycle Datapath from Harris & Harris, "Digital Design and Computer Architecture".*
 
 ---
