@@ -61,7 +61,7 @@ The processor's architectural state and control logic were rigorously verified u
 
 ## Simulation
 
-Tested on EDA Playground with Icarus Verilog (v0.9.7).
+Tested on EDA Playground with Icarus Verilog (v12.0).
 
 1. Open [EDA Playground](https://edaplayground.com)
 2. Add all `src/` files and your testbench
