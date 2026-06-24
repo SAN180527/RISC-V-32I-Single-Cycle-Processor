@@ -11,7 +11,8 @@ A structural Verilog implementation of a 32-bit RISC-V processor core based on t
 * **Simulation Tool:** Icarus Verilog / EDA Playground (EPWave)
 
 <img src="RISC_V_image.png" width="700">
-*Diagram based on the RISC-V Single-Cycle Datapath from Harris & Harris, "Digital Design and Computer Architecture".*
+*Diagram based on the RISC-V Single-Cycle Datapath from Digital Design and Computer Architecture, RISC-V Edition book by David Harris and Sarah L. Harris
+.*
 
 ---
 
