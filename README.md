@@ -36,7 +36,7 @@ The processor's architectural state and control logic were rigorously verified u
 ### 1. Arithmetic & Register Writeback
 **Test:** `addi x1, x0, 5` -> `addi x2, x0, 7` -> `add x3, x1, x2`
 
-*(Insert Image Here: Upload your 2nd screenshot showing WD3 calculating c)*
+![*(Insert Image Here: Upload your 2nd screenshot showing WD3 calc)*](https://github.com/SAN180527/RISC-V-32I-Single-Cycle-Processor/blob/main/Screenshot%202026-06-24%20171811.png)
 
 * **Result:** The ALU successfully processes immediate and register values, and the `WE3` signal correctly asserts to save the final calculation (`0xc` / 12) back into the register file.
 
