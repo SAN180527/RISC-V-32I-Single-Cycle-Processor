@@ -43,8 +43,8 @@ The processor's architectural state and control logic were rigorously verified u
 ### 2. Control Flow & Branching Logic
 **Test:** `addi x1, x0, 1` -> `beq x1, x1, -4` (Infinite Loop)
 
-*(Insert Image Here: Upload your 1st screenshot showing PC_Top looping 0->4->0)*
-
+![*(Insert Image Here: Upload your 1st screenshot showing PC_Top looping 0->4->0)*
+](https://github.com/SAN180527/RISC-V-32I-Single-Cycle-Processor/blob/main/Screenshot%202026-06-24%20172241.png)
 * **Result:** The ALU `zero` flag successfully triggers the control unit's `pc_src` multiplexer, dynamically rerouting the Program Counter backward instead of continuing sequentially.
 
 ### 3. Memory Subsystem Interface
